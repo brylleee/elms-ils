@@ -1,0 +1,108 @@
+html {
+    scroll-behavior: smooth;
+}
+
+html, body, button {
+    font-family: 'RobotoLightNew', 'Ubuntu', helvetica, sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+    user-select: none;
+}
+
+#app {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+header {
+    background-color: white;
+    padding: 5px 20px 5px 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: x-large;
+}
+
+.logo span {
+    display: flex;
+    align-items: center;
+}
+
+.round-btn {
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-style: none;
+    background-color: #01579B;
+    color: white;
+    height: 35px;
+    width: 70px;
+    font-size: medium;
+}
+
+#features {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#features div {
+    width: 20%;
+    text-align: center;
+}
+
+i {
+    font-size: x-large;
+    color: white;
+}
+
+footer {
+    padding: 10px 15px 10px 15px;
+    background-color: #06192d;
+    width: 100%;
+    text-align: right;
+}
+
+footer a + a {
+    padding: 5px;
+}
+
+/* Make images unselectable */
+img {
+    pointer-events: none;
+    user-select: none;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #features {
+        flex-direction: column;
+    }
+
+    #features div {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .logo span .name {
+        display: none;
+    }
+}
