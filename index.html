@@ -4,7 +4,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>STI Educatiossn Services Groupsaa</title>
+
+        <title>STI Education Services Group</title>
+
+        <link rel="icon" type="image/x-icon" href="assets/sti.jpg">
 
         <script src="libs/vue.js"></script>
         <script src="app.js" type="module"></script>
@@ -23,15 +26,29 @@
     <body>
         <div id="app">
             <div v-cloak>
-                <header>
-                    <div id="mobile-header" hidden>
+                <header style="background-color:#01579B;color:white;" v-if="loggedIn">
+                    <div class="logo">
+                        <span>
+                            <i id="hamburger" @click="showSide" class="fa-solid fa-bars" style="padding-right:15px;font-size:medium;display:none"></i>
+                            <span class="name">Assessment Exams</span>
+                        </span>
 
+                        <span class="right-bar">
+                            <i class="fa-solid fa-envelope"></i>
+                            <i class="fa-solid fa-bell"></i>
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <i class="fa-solid fa-circle-question"></i>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            {{ userName }}
+                            <i class="fa-solid fa-caret-down"></i>
+                        </span>
                     </div>
-
+                </header>
+                <header v-else>
                     <div class="logo">
                         <span>
                             <img src="/assets/elms_sti.png" style="max-height: calc(51px - (0px * 2))" />
-                            <span class="name">STI Educatiossn Services Group</span>
+                            <span class="name">STI Education Services Group</span>
                         </span>
 
                         <span>
@@ -40,79 +57,176 @@
                     </div>
                 </header>
 
-                <div id="sti-images" class="carousel slide" data-ride="carousel" data-interval="3500">
-                    <ol class="carousel-indicators">
-                        <li data-target="#sti-images" data-slide-to="0" class="active"></li>
-                        <li data-target="#sti-images" data-slide-to="1"></li>
-                        <li data-target="#sti-images" data-slide-to="2"></li>
-                        <li data-target="#sti-images" data-slide-to="3"></li>
-                        <li data-target="#sti-images" data-slide-to="4"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="/assets/carousel1.jpg" style="width: 100%; height: 600px; object-fit: cover;" alt="...">
+                <div id="content" v-if="loggedIn">
+                    <div class="container">
+                        <div class="quiz-header">
+                            <center><h5>Assessment Exams</h5></center>
+                            <p style="color:#01579B">01 eLMS Exams</p>
+                            <hr /><br />
                         </div>
-                        <div class="carousel-item">
-                            <img src="/assets/carousel2.jpg" style="width: 100%; height: 600px; object-fit: cover;" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5>ONE STI Learning Model</h5>
-                              <p>The ONE STI Learning Model strengthens STI’s existing blended learning mode that combines independent online learning at home via the eLMS</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/assets/carousel3.jpg" style="width: 100%; height: 600px; object-fit: cover;" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/assets/carousel4.jpg" style="width: 100%; height: 600px; object-fit: cover;" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5>Online Registration</h5>
-                              <p>We warmly welcome high school graduates, college transferees, second coursers, foreign applicants, and graduate program applicants to our campuses</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/assets/carousel5.jpg" style="width: 100%;  height: 600px; object-fit: cover;" alt="...">
-                        </div>
+                        <div class="side"><br />
+                            <center><h5>Subjects</h5></center>
 
-                        <a class="carousel-control-prev" href="#sti-images" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#sti-images" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                            <br />
+
+                            <div class="list-group">
+                                <button type="button" style="overflow:hidden" class="list-group-item list-group-item-action">Mathematics</button>
+                                <button type="button" style="overflow:hidden" class="list-group-item list-group-item-action">Science</button>
+                                <button type="button" style="overflow:hidden" class="list-group-item list-group-item-action">History</button>
+                                <button type="button" style="overflow:hidden" class="list-group-item list-group-item-action" disabled>Computer Studies</button>
+                            </div>
+                        </div>
+                        <div class="quiz-info">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>Status</h5>
+
+                                    <div class="status-list">
+                                        <i class="fa-solid fa-book" style="color:rgb(157, 0, 0);"></i>  Subject
+                                    </div>
+
+                                    <div class="status-list">
+                                        <i class="fa-solid fa-gear" style="color:grey"></i>  Difficulty
+                                    </div>
+
+                                    <div class="status-list">
+                                        <i class="fa-solid fa-clock" style="color:dodgerblue"></i>  Not timed
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>Progress</h5>
+
+                                    <br />
+
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quiz">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="question-details">
+                                        <h5 style="color:#01579B">Question 1 of 25</h5>
+                                        <p>1 point</p>
+                                    </div>
+
+                                    <h6>This is some text within a card body.</h6><br />
+
+                                    <em>Select the correct response:</em>
+                                    <div class="form-check">
+                                        <div class="choice custom-control custom-radio">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                                            <label class="form-check-label" for="flexRadioDefault1"> Default radio </label>
+                                        </div>
+
+                                        <div class="choice custom-control custom-radio">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                                            <label class="form-check-label" for="flexRadioDefault1"> Default radio </label>
+                                        </div>
+
+                                        <div class="choice custom-control custom-radio">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                                            <label class="form-check-label" for="flexRadioDefault1"> Default radio </label>
+                                        </div>
+
+                                        <div class="choice custom-control custom-radio">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                                            <label class="form-check-label" for="flexRadioDefault1"> Default radio </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="bottom-buttons">
+                                        <button type="button" class="btn btn-primary">Continue ›</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div id="content" v-else>
+                    <div id="sti-images" class="carousel slide" data-ride="carousel" data-interval="3500">
+                        <ol class="carousel-indicators">
+                            <li data-target="#sti-images" data-slide-to="0" class="active"></li>
+                            <li data-target="#sti-images" data-slide-to="1"></li>
+                            <li data-target="#sti-images" data-slide-to="2"></li>
+                            <li data-target="#sti-images" data-slide-to="3"></li>
+                            <li data-target="#sti-images" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="/assets/carousel1.jpg" style="width: 100%; height: 600px; object-fit: cover;" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/assets/carousel2.jpg" style="width: 100%; height: 600px; object-fit: cover;" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5>ONE STI Learning Model</h5>
+                                <p>The ONE STI Learning Model strengthens STI’s existing blended learning mode that combines independent online learning at home via the eLMS</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/assets/carousel3.jpg" style="width: 100%; height: 600px; object-fit: cover;" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/assets/carousel4.jpg" style="width: 100%; height: 600px; object-fit: cover;" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5>Online Registration</h5>
+                                <p>We warmly welcome high school graduates, college transferees, second coursers, foreign applicants, and graduate program applicants to our campuses</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/assets/carousel5.jpg" style="width: 100%;  height: 600px; object-fit: cover;" alt="...">
+                            </div>
 
-                <!-- brr lameg haha -->
-                <br><br><br>
-
-                <div id="features">
-                    <div id="modules">
-                        <img src="/assets/modules.jpg" height="150" /><br/>
-                        <h6>Easy access to learning modules</h6>
-                        Students can study ahead, review past lessons, and watch instructional videos with a click or a tap of a button on any gadget.
+                            <a class="carousel-control-prev" href="#sti-images" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#sti-images" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
 
-                    <div id="activities">
-                        <img src="/assets/activities.jpg" height="150" />
-                        <h6>Interactive activities and assessments</h6>
-                        Students can test their knowledge and skills through interactive polls, quizzes, and debates, among others.
-                    </div>
+                    <!-- brr lameg haha -->
+                    <br><br><br>
 
-                    <div id="attendance">
-                        <img src="/assets/attendance.jpg" height="150" />
-                        <h6>Student attendance tracking</h6>
-                        Marking student attendance for an online class is more convenient whether the student logs in early, on time, late, or is offline.
-                    </div>
+                    <div id="features">
+                        <div id="modules">
+                            <img src="/assets/modules.jpg" height="150" /><br/>
+                            <h6>Easy access to learning modules</h6>
+                            Students can study ahead, review past lessons, and watch instructional videos with a click or a tap of a button on any gadget.
+                        </div>
 
-                    <div id="collab">
-                        <img src="/assets/collab.jpg" height="150" />
-                        <h6>Collaborate with classmates</h6>
-                        The eLMS allows the students to chat with classmates, join forum discussions, write a blog, and facilitate a group work activity — all within the site.
-                    </div>
-                </div><br>
+                        <div id="activities">
+                            <img src="/assets/activities.jpg" height="150" />
+                            <h6>Interactive activities and assessments</h6>
+                            Students can test their knowledge and skills through interactive polls, quizzes, and debates, among others.
+                        </div>
+
+                        <div id="attendance">
+                            <img src="/assets/attendance.jpg" height="150" />
+                            <h6>Student attendance tracking</h6>
+                            Marking student attendance for an online class is more convenient whether the student logs in early, on time, late, or is offline.
+                        </div>
+
+                        <div id="collab">
+                            <img src="/assets/collab.jpg" height="150" />
+                            <h6>Collaborate with classmates</h6>
+                            The eLMS allows the students to chat with classmates, join forum discussions, write a blog, and facilitate a group work activity — all within the site.
+                        </div>
+                    </div><br>
+                </div>
             </div>
+
+            <br />
 
             <footer>
                 <a href="http://www.youtube.com/user/STIdotEdu">

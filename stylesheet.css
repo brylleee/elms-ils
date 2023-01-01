@@ -43,6 +43,87 @@ header {
     align-items: center;
 }
 
+.logo .right-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: medium;
+}
+
+.logo .right-bar i {
+    font-size: medium;
+}
+
+#content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 'side quiz-header quiz-header quiz-header quiz-header quiz-header'
+                         'side ... quiz quiz quiz info'
+                         'side ... quiz quiz quiz info';
+    gap: 15px;
+}
+
+.quiz {
+    grid-area: quiz;
+}
+
+.quiz-header {
+    margin-top: 10px;
+    grid-area: quiz-header;
+}
+
+.quiz-info {
+    grid-area: info;
+}
+
+.side {
+    position: absolute;
+    z-index: -1;
+    background-color:#e9e9e9;
+    width: 12%;
+    height: 90vh;
+    left: 0;
+    grid-area: side;
+
+    padding: 5px;
+}
+
+.card-body .question-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status-list {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.status-list i {
+    color: black;
+}
+
+.form-check .choice {
+    background-color: #e9e9e9;
+    border: 10px solid #e9e9e9;
+    margin-bottom: 5px;
+
+    position: relative;
+    right: 10px;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: end;
+}
+
 .round-btn {
     border-radius: 50px;
     -webkit-border-radius: 50px;
@@ -98,6 +179,22 @@ img {
 
     #features div {
         width: 90%;
+    }
+
+    .container {
+        grid-template-areas: 'side quiz-header quiz-header quiz-header quiz-header quiz-header'
+                             'side ... quiz quiz quiz ...'
+                             'side ... info info info ...';
+    }
+
+    .side {
+        display: none;
+        width: 40%;
+        z-index: 2;
+    }
+
+    #hamburger {
+        display: inline !important;
     }
 }
 

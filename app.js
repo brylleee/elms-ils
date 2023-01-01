@@ -7,8 +7,8 @@ createApp({
     },
     data() {
         return {
-            titleClass: 'titlesssas',
-            userName: ''
+            loggedIn: true,
+            userName: 'Brylle Olaivar'
         }
     },
     methods: {
@@ -17,16 +17,30 @@ createApp({
                 auth: {
                     clientId: "ce4556ff-00c1-45ce-80e1-7ae069267435",
                     authority: "https://login.microsoftonline.com/stamaria.sti.edu.ph",
-                    redirectUri: `http://localhost:8080/lista-qr`,
+                    redirectUri: `http://localhost:5500/lista-qr`,
                 }
             };
 
             const msalInstance = new msal.PublicClientApplication(msalConfig);
+
             if (msalInstance.getAllAccounts()) {
                 await msalInstance.loginPopup();
 
+                document.title = "Instructions - Assessment Exams";
+
                 const a = msalInstance.getAllAccounts()[0];
                 console.log(a.name)
+                this.loggedIn = true;
+            }
+        },
+
+        showSide() {
+            let display = document.getElementsByClassName("side")[0].style.display;
+
+            if(display == "none") {
+                document.getElementsByClassName("side")[0].style.display = "block";
+            } else {
+                document.getElementsByClassName("side")[0].style.display = "none";
             }
         }
     }
