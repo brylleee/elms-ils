@@ -70,10 +70,12 @@ header {
 
 .quiz {
     grid-area: quiz;
+    padding-left: 50px;
 }
 
 .quiz-header {
     margin-top: 10px;
+    padding-left: 50px;
     grid-area: quiz-header;
 }
 
@@ -171,6 +173,18 @@ img {
     user-select: none;
 }
 
+@media only screen and (max-width: 860px) {
+    .side {
+        display: none;
+        width: 40%;
+        z-index: 2;
+    }
+
+    #hamburger {
+        display: inline !important;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     #features {
@@ -185,16 +199,6 @@ img {
         grid-template-areas: 'side quiz-header quiz-header quiz-header quiz-header quiz-header'
                              'side ... quiz quiz quiz ...'
                              'side ... info info info ...';
-    }
-
-    .side {
-        display: none;
-        width: 40%;
-        z-index: 2;
-    }
-
-    #hamburger {
-        display: inline !important;
     }
 }
 
