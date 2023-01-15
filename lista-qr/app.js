@@ -1,6 +1,4 @@
-import { createApp } from './../libs/vue.js'
-
-createApp({
+Vue.createApp({
     mounted() {
         const msalConfig = {
             auth: {
